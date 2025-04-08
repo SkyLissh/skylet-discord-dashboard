@@ -1,4 +1,21 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "example_message": "Hello world {username}"
+  "example_message": "Hello world {username}",
+  "skylet": "SkyLet",
+  "select_language": "Select a language",
+  "login": "Login",
+  "slogan": "The best Discord companion\nfor all your server needs!",
+  "features": "Twitch notifications, welcome messages, utilities, and more!",
+  "add_to_discord": "Add to Discord",
+  "dashboard": "Dashboard",
+  "commands": "Commands",
+  "modules": "Modules",
+  "twitch_alerts": "Twitch Alerts",
+  "twitch_alerts_description": "Get notified when your favorite streamers go live.",
+  "music": "Music",
+  "music_description": "Listen to your favorite songs in Discord.",
+  "welcome_messages": "Welcome Messages",
+  "welcome_messages_description": "Welcome new members with a custom message.",
+  "moderation": "Moderation",
+  "moderation_description": "Moderate your server with ease."
 }
