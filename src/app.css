@@ -1,1 +1,255 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@plugin "@kobalte/tailwindcss";
+
+@layer base {
+  :root {
+    --color-background: oklch(21% 0.006 285.885);
+    --color-foreground: oklch(98.5% 0 0);
+
+    --color-muted: oklch(37% 0.013 285.805);
+    --color-muted-foreground: oklch(87.1% 0.006 286.286);
+
+    --color-accent: oklch(37% 0.013 285.805);
+    --color-accent-foreground: oklch(98.5% 0 0);
+
+    --color-popover: oklch(20.5% 0 0);
+    --color-popover-foreground: oklch(98.5% 0 0);
+
+    --color-border: oklch(37% 0.013 285.805);
+    --color-input: oklch(44.2% 0.017 285.786);
+
+    --color-card: hsl(240 10% 3.9%);
+    --color-card-foreground: hsl(0 0% 98%);
+
+    --color-primary: oklch(81% 0.117 11.638);
+    --color-primary-foreground: oklch(27.4% 0.006 286.033);
+
+    --color-secondary: oklch(41% 0.159 10.272);
+    --color-secondary-foreground: oklch(98.5% 0 0);
+
+    --color-destructive: oklch(50.5% 0.213 27.518);
+    --color-destructive-foreground: oklch(98.5% 0 0);
+
+    --color-info: oklch(42.4% 0.199 265.638);
+    --color-info-foreground: oklch(70.7% 0.165 254.624);
+
+    --color-success: oklch(37.8% 0.077 168.94);
+    --color-success-foreground: oklch(76.5% 0.177 163.223);
+
+    --color-warning: oklch(47.3% 0.137 46.201);
+    --color-warning-foreground: oklch(82.8% 0.189 84.429);
+
+    --color-error: oklch(50.5% 0.213 27.518);
+    --color-error-foreground: oklch(98.5% 0 0);
+
+    --color-ring: oklch(81% 0.117 11.638);
+
+    --sidebar-background: oklch(21% 0.006 285.885);
+    --sidebar-foreground: oklch(98.5% 0 0);
+    --sidebar-primary: oklch(81% 0.117 11.638);
+    --sidebar-primary-foreground: oklch(27.4% 0.006 286.033);
+    --sidebar-accent: oklch(37% 0.013 285.805);
+    --sidebar-accent-foreground: oklch(98.5% 0 0);
+    --sidebar-border: oklch(37% 0.013 285.805);
+    --sidebar-ring: oklch(81% 0.117 11.638);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      @apply px-4;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+    @apply bg-accent;
+  }
+
+  ::-webkit-scrollbar-corner {
+    display: none;
+  }
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--border, currentColor);
+  }
+}
+
+@theme {
+  --font-sans: "Poppins", sans-serif;
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --color-error: var(--error);
+  --color-error-foreground: var(--error-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --radius: 0.5rem;
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --sidebar-background: var(--sidebar-background);
+  --sidebar-foreground: var(--sidebar-foreground);
+  --sidebar-primary: var(--sidebar-primary);
+  --sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --sidebar-accent: var(--sidebar-accent);
+  --sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --sidebar-border: var(--sidebar-border);
+  --sidebar-ring: var(--sidebar-ring);
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--kb-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--kb-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes collapsible-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--kb-collapsible-content-height);
+    }
+  }
+
+  @keyframes collapsible-up {
+    from {
+      height: var(--kb-collapsible-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes content-show {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes content-hide {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+
+  @keyframes caret-blink {
+    0%,
+    70%,
+    100% {
+      opacity: 1;
+    }
+    20%,
+    50% {
+      opacity: 0;
+    }
+  }
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-content-show: content-show 0.2s ease-out;
+  --animate-content-hide: content-hide 0.2s ease-out;
+  --animate-caret-blink: caret-blink 1.25s ease-out infinite;
+  --animate-collapsible-down: collapsible-down 0.2s ease-out;
+  --animate-collapsible-up: collapsible-up 0.2s ease-out;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+@utility step {
+  counter-increment: step;
+
+  &:before {
+    @apply bg-muted border-background absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 text-center -indent-px font-mono text-base font-medium;
+    @apply mt-[-4px] ml-[-50px];
+    content: counter(step);
+  }
+}
