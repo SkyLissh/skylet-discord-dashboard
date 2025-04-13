@@ -1,7 +1,5 @@
 // @refresh reload
-
 import { createHandler, StartServer } from "@solidjs/start/server";
-
 import { getLocale } from "~/paraglide/runtime";
 
 export default createHandler(() => (
