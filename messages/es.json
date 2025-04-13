@@ -1,6 +1,6 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "example_message": "Hola {username}",
+  "hi": "Hola {username}",
   "skylet": "SkyLet",
   "select_language": "Selecciona un idioma",
   "login": "Iniciar sesión",
@@ -17,5 +17,16 @@
   "welcome_messages": "Mensajes de bienvenida",
   "welcome_messages_description": "Recibe a nuevos miembros con un mensaje personalizado.",
   "moderation": "Moderación",
-  "moderation_description": "Modera tu servidor con facilidad."
+  "moderation_description": "Modera tu servidor con facilidad.",
+  "logout": "Cerrar sesión",
+  "profile": "Perfil",
+  "user_servers": "Servidores de {username}",
+  "choose_manage_server": "Elige un servidor para administrar desde la lista de abajo",
+  "owner": "Dueño/a",
+  "admin": "Admin",
+  "go": "Ir",
+  "search_server": "Buscar servidores...",
+  "main": "Principal",
+  "server": "Servidor",
+  "social_alerts": "Alertas Sociales"
 }
