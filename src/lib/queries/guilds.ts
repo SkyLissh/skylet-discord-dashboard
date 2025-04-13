@@ -6,7 +6,7 @@ import * as v from "valibot";
 import { db } from "~/db";
 import { accounts } from "~/db/schema/auth";
 
-import { UserGuild } from "~/schemas/guild";
+import { Guild, UserGuild } from "~/schemas/guild";
 
 import { getSessionServer } from "~/lib/auth";
 import { bot, discord } from "~/lib/discord";
@@ -39,6 +39,5 @@ export const getGuild = query(async (guildId: string) => {
     }),
   });
 
-  // return v.parse(Guild, response);
-  return { id: response.id, name: response.name };
+  return v.parse(Guild, response);
 }, "guild");

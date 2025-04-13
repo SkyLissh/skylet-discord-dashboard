@@ -28,5 +28,13 @@
   "search_server": "Search servers...",
   "main": "Main",
   "server": "Server",
-  "social_alerts": "Social Alerts"
+  "social_alerts": "Social Alerts",
+  "server_summary": "Server Summary",
+  "stats_about_server": "Stats about your server",
+  "members": "Members",
+  "channels": "Channels",
+  "roles": "Roles",
+  "categories": "Categories",
+  "id": "ID",
+  "no_alerts_yet": "You haven't set up any {service} alerts yet. Add one below!"
 }

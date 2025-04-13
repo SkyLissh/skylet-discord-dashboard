@@ -10,7 +10,7 @@ export const route: RouteDefinition = {
 };
 
 export default function Layout(props: RouteSectionProps) {
-  const session = createAsync(() => getMaybeSession());
+  const session = createAsync(() => getMaybeSession(), { deferStream: true });
 
   return (
     <>

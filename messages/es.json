@@ -28,5 +28,13 @@
   "search_server": "Buscar servidores...",
   "main": "Principal",
   "server": "Servidor",
-  "social_alerts": "Alertas Sociales"
+  "social_alerts": "Alertas Sociales",
+  "server_summary": "Resumen del servidor",
+  "stats_about_server": "Estadísticas sobre tu servidor",
+  "members": "Miembros",
+  "channels": "Canales",
+  "roles": "Roles",
+  "categories": "Categorías",
+  "id": "ID",
+  "no_alerts_yet": "No tienes ninguna alerta de {service} configurada. Añade una abajo!"
 }
