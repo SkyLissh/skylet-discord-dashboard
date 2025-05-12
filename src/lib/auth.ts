@@ -1,3 +1,4 @@
+import { redirect } from "@solidjs/router";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { getRequestEvent } from "solid-js/web";
@@ -64,10 +65,10 @@ export async function getSessionServer() {
   const session = await getMaybeSessionServer();
 
   if (!session) {
-    await auth.api.signInSocial({
+    const signIn = await auth.api.signInSocial({
       body: {
         provider: "discord",
-        callbackUrl: new URL(event.request.url).pathname,
+        callbackUrl: "/dashboard",
         scopes: [
           "identify",
           "email",
@@ -78,6 +79,9 @@ export async function getSessionServer() {
       },
     });
 
+    console.log(signIn.url);
+
+    if (signIn.redirect) throw redirect(signIn.url!);
     throw new Error("No session");
   }
 

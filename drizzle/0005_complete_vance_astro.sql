@@ -1,0 +1,1 @@
+DROP INDEX `streamer_idx`;

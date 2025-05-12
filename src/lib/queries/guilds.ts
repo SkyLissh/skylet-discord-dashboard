@@ -22,18 +22,25 @@ export const getGuilds = query(async () => {
     .where(eq(accounts.userId, session.user.id));
 
   const response = await discord(account.accessToken!).get(Routes.userGuilds());
+  const botResponse = await bot.get(Routes.userGuilds());
 
   const guilds = v.parse(v.array(UserGuild), response);
 
-  return guilds.filter(
+  const botGuilds = v.parse(v.array(UserGuild), botResponse);
+
+  const adminGuilds = guilds.filter(
     (guild) => BigInt(guild.permissions) & PermissionFlagsBits.Administrator
+  );
+
+  return adminGuilds.filter((guild) =>
+    botGuilds.some((botGuild) => botGuild.id === guild.id)
   );
 }, "guilds");
 
 export const getGuild = query(async (guildId: string) => {
   "use server";
 
-  const response: any = await bot.get(Routes.guild(guildId), {
+  const response = await bot.get(Routes.guild(guildId), {
     query: new URLSearchParams({
       with_counts: "true",
     }),

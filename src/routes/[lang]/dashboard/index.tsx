@@ -12,20 +12,20 @@ import Crown from "~icons/lucide/crown";
 import Search from "~icons/lucide/search";
 import Shield from "~icons/lucide/shield";
 
-import { getSession } from "~/lib/queries/auth";
+import { getProfile } from "~/lib/queries/discord-profile";
 import { getGuilds } from "~/lib/queries/guilds";
 import { removeDiacritics } from "~/lib/utils";
 
 export const route: RouteDefinition = {
   preload: () => {
-    void getSession();
+    void getProfile();
     void getGuilds();
   },
 };
 
 export default function Page() {
   const guilds = createAsync(() => getGuilds(), { deferStream: true });
-  const session = createAsync(() => getSession(), { deferStream: true });
+  const profile = createAsync(() => getProfile(), { deferStream: true });
 
   const [search, setSearch] = createSignal("");
   const filteredGuilds = createMemo(() =>
@@ -39,11 +39,11 @@ export default function Page() {
 
   return (
     <main class="mx-auto flex max-w-7xl flex-col gap-12 py-20">
-      <Show when={session()?.user}>
+      <Show when={profile()}>
         {(user) => (
           <div class="flex items-center gap-4">
             <img
-              src={user().image!}
+              src={user().avatar_url}
               alt={user().name}
               class="size-12 rounded-full"
               loading="lazy"

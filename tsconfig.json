@@ -13,8 +13,7 @@
     "types": ["vinxi/types/client", "unplugin-icons/types/solid"],
     "isolatedModules": true,
     "paths": {
-      "~/*": ["./src/*"],
-      "@/*": ["./src/*"]
+      "~/*": ["./src/*"]
     }
   }
 }
