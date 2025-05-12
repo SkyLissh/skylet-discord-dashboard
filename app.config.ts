@@ -1,4 +1,3 @@
-import path from "path";
 import { fileURLToPath } from "url";
 
 import { paraglideVitePlugin } from "@inlang/paraglide-js";
@@ -11,7 +10,6 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        "@": path.resolve(import.meta.dirname, "src"),
         "lucide-solid/icons": fileURLToPath(
           new URL("./node_modules/lucide-solid/dist/source/icons", import.meta.url)
         ),
@@ -22,7 +20,7 @@ export default defineConfig({
       paraglideVitePlugin({
         project: "./project.inlang",
         outdir: "./src/paraglide",
-        strategy: ["cookie", "preferredLanguage", "baseLocale"],
+        strategy: ["url", "cookie", "preferredLanguage", "baseLocale"],
         urlPatterns: [
           {
             pattern: "/:path(.*)?",

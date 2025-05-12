@@ -23,6 +23,10 @@ app.config.timestamp_*.js
 # Temp
 gitignore
 
+# Drizzle
+drizzle/meta/_journal.json
+drizzle/meta/*.json
+
 # System Files
 .DS_Store
 Thumbs.db

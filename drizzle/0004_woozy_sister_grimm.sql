@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `streamer_idx` ON `twitch_alerts` (`streamer`);

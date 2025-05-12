@@ -26,6 +26,12 @@ importers:
       '@libsql/win32-x64-msvc':
         specifier: ^0.5.5
         version: 0.5.5
+      '@modular-forms/solid':
+        specifier: ^0.25.1
+        version: 0.25.1(solid-js@1.9.5)(typescript@5.8.3)
+      '@solid-primitives/scheduled':
+        specifier: ^1.5.0
+        version: 1.5.0(solid-js@1.9.5)
       '@solidjs/meta':
         specifier: ^0.29.4
         version: 0.29.4(solid-js@1.9.5)
@@ -41,6 +47,12 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.1.3
         version: 4.1.3(vite@6.2.6(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0))
+      '@tanstack/solid-query':
+        specifier: ^5.74.4
+        version: 5.74.4(solid-js@1.9.5)
+      '@tanstack/solid-query-devtools':
+        specifier: ^5.74.4
+        version: 5.74.4(@tanstack/solid-query@5.74.4(solid-js@1.9.5))(solid-js@1.9.5)
       better-auth:
         specifier: ^1.2.5
         version: 1.2.5(typescript@5.8.3)
@@ -50,6 +62,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      cmdk-solid:
+        specifier: ^1.1.2
+        version: 1.1.2(solid-js@1.9.5)
       discord-api-types:
         specifier: ^0.37.119
         version: 0.37.120
@@ -59,6 +74,15 @@ importers:
       drizzle-orm:
         specifier: ^0.41.0
         version: 0.41.0(@libsql/client@0.15.3)(bun-types@1.2.9)(gel@2.0.2)(kysely@0.27.6)
+      es-toolkit:
+        specifier: ^1.37.2
+        version: 1.37.2
+      nanoid:
+        specifier: ^5.1.5
+        version: 5.1.5
+      ofetch:
+        specifier: ^1.4.1
+        version: 1.4.1
       solid-js:
         specifier: ^1.9.5
         version: 1.9.5
@@ -93,9 +117,9 @@ importers:
       '@kobalte/tailwindcss':
         specifier: ^0.9.0
         version: 0.9.0(tailwindcss@4.1.3)
-      '@types/bun':
-        specifier: latest
-        version: 1.2.9
+      '@tanstack/eslint-plugin-query':
+        specifier: ^5.73.3
+        version: 5.73.3(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3)
       '@types/eslint-plugin-jsx-a11y':
         specifier: ^6.10.0
         version: 6.10.0
@@ -1126,6 +1150,11 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
+  '@kobalte/core@0.12.6':
+    resolution: {integrity: sha512-+Ta2o2wEqZ2fCqLMkvjT40VHNmcFKdGe8TNDVQbbMPk66qoU6g/DDRFR/Ib7eAjb+C95VoIyk6zaafos2VOo0w==}
+    peerDependencies:
+      solid-js: ^1.8.15
+
   '@kobalte/core@0.13.9':
     resolution: {integrity: sha512-TkeSpgNy7I5k8jwjqT9CK3teAxN0aFb3yyL9ODb06JVYMwXIk+UKrizoAF1ahLUP85lKnxv44B4Y5cXkHShgqw==}
     peerDependencies:
@@ -1205,6 +1234,11 @@ packages:
     resolution: {integrity: sha512-llMXd39jtP0HpQLVI37Bf1m2ADlEb35GYSh1SDSLsBhR+5iCxiNGlT31yqbNtVHygHAtMy6dWFERpU2JgufhPg==}
     engines: {node: '>=18'}
     hasBin: true
+
+  '@modular-forms/solid@0.25.1':
+    resolution: {integrity: sha512-issNZ3xl4tj+1K7KT4dNTQaRq5SmVUXgUPeGTMjtrAzCeTnwM/u6vUxSuTY2bcMw4GzTxreFXLx1xMMhrFkt0A==}
+    peerDependencies:
+      solid-js: ^1.3.1
 
   '@neon-rs/load@0.0.4':
     resolution: {integrity: sha512-kTPhdZyTQxB+2wpiRcFWrDcejc4JI6tkPuS7UZCG4l6Zvc5kU/gGQ/ozvHTh1XR5tS+UlfAfGuPajjzQjCiHCw==}
@@ -1582,6 +1616,11 @@ packages:
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
 
+  '@solid-primitives/deep@0.2.10':
+    resolution: {integrity: sha512-uzhXr/cMABsGkTcV3yuviZjTDmj44wb2JetuJ5O8NCugz4Ug/6XlPjT8ISMPYV7eCbC/gFhgt7e60+TRpl2Upg==}
+    peerDependencies:
+      solid-js: ^1.6.12
+
   '@solid-primitives/event-listener@2.4.0':
     resolution: {integrity: sha512-TSfR1PNTfojFEYGSxSMCnUhXsaYWBo4p+cm73QmWODa9YnaQAk6PB7VjzG2bOT2D817VlvuOqTj0Qdq+MZrdGg==}
     peerDependencies:
@@ -1602,6 +1641,16 @@ packages:
     peerDependencies:
       solid-js: ^1.6.12
 
+  '@solid-primitives/memo@1.4.1':
+    resolution: {integrity: sha512-MzNCJNpXidQdLOZUsEkwpuq52uwT8zrFrBxEVMEr9N35yIIvGhjqwrI1M6xzPmJGzuVUe8anCk57q+N5gyRk0Q==}
+    peerDependencies:
+      solid-js: ^1.6.12
+
+  '@solid-primitives/mutation-observer@1.2.0':
+    resolution: {integrity: sha512-U7ZuO7IE5cPK2qPRJF5pyoI/H/D1TCdS6pXfC8gt6m+SUkLHllN2vcX7GtEHPU0xVOXw/zf+EMafo++qtGDn5Q==}
+    peerDependencies:
+      solid-js: ^1.6.12
+
   '@solid-primitives/props@3.2.0':
     resolution: {integrity: sha512-vEg5yERdXftJz2+A6B0IMYTrPL9SE2DPmpURV/nZyqQ+PXziF02V4b4SDr6JX3jNJxBlY6c17LqwYEw+bIfGRg==}
     peerDependencies:
@@ -1619,6 +1668,11 @@ packages:
 
   '@solid-primitives/rootless@1.5.0':
     resolution: {integrity: sha512-YJ+EveQeDv9DLqfDKfsPAAGy2x3vBruoD23yn+nD2dT84QjoBxWT1T0qA0TMFjek6/xuN3flqnHtQ4r++4zdjg==}
+    peerDependencies:
+      solid-js: ^1.6.12
+
+  '@solid-primitives/scheduled@1.5.0':
+    resolution: {integrity: sha512-RVw24IRNh1FQ4DCMb3OahB70tXIwc5vH8nhR4nNPsXwUPQeuOkLsDI5BlxaPk0vyZgqw9lDpufgI3HnPwplgDw==}
     peerDependencies:
       solid-js: ^1.6.12
 
@@ -1758,6 +1812,17 @@ packages:
     resolution: {integrity: sha512-BlUDUcao4yH4IpPvxiHoMXtEYfN17pFSQeRsfAKNFrib2xUFgS6/F5EF3uXHvCtKqp0K+mM9UdY0Pp8WwZjddA==}
     engines: {node: '>=12'}
 
+  '@tanstack/eslint-plugin-query@5.73.3':
+    resolution: {integrity: sha512-GmUtnOkRzDuNOq96g3eW5ADKC1nWfrM9RI0kRyQVr87rOl6y+PUgkuVaPxh3R2C0EVODxCS07b9aaWphidl/OA==}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0
+
+  '@tanstack/query-core@5.74.4':
+    resolution: {integrity: sha512-YuG0A0+3i9b2Gfo9fkmNnkUWh5+5cFhWBN0pJAHkHilTx6A0nv8kepkk4T4GRt4e5ahbtFj2eTtkiPcVU1xO4A==}
+
+  '@tanstack/query-devtools@5.73.3':
+    resolution: {integrity: sha512-hBQyYwsOuO7QOprK75NzfrWs/EQYjgFA0yykmcvsV62q0t6Ua97CU3sYgjHx0ZvxkXSOMkY24VRJ5uv9f5Ik4w==}
+
   '@tanstack/router-utils@1.115.0':
     resolution: {integrity: sha512-Dng4y+uLR9b5zPGg7dHReHOTHQa6x+G6nCoZshsDtWrYsrdCcJEtLyhwZ5wG8OyYS6dVr/Cn+E5Bd2b6BhJ89w==}
     engines: {node: '>=12'}
@@ -1765,6 +1830,17 @@ packages:
   '@tanstack/server-functions-plugin@1.115.0':
     resolution: {integrity: sha512-Ip9JS9/KeNR8+WidxD8uOrzayY5vRxIajSs5E2EPXdoSGvsJ7tyJIqZAWeSqCJV1oEsJRX/zykCVddguchg59A==}
     engines: {node: '>=12'}
+
+  '@tanstack/solid-query-devtools@5.74.4':
+    resolution: {integrity: sha512-jgi91sxzuUutg3U8O+1Bc1lRG2h8R6YYnuq1DWwok3c81JcJZOuyiwZaBYsA4mF0DF6cLcyEOHxR40xAJKe21A==}
+    peerDependencies:
+      '@tanstack/solid-query': ^5.74.4
+      solid-js: ^1.6.0
+
+  '@tanstack/solid-query@5.74.4':
+    resolution: {integrity: sha512-m5DFB9L9d3uL7eRHSlOARuDBOn2JKiZZ4MJ3mX0fT7rv2MbZuSOyerQ44JQsWCo/HJD82XefsXEYrDVi3uy+Eg==}
+    peerDependencies:
+      solid-js: ^1.6.0
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -1780,9 +1856,6 @@ packages:
 
   '@types/braces@3.0.5':
     resolution: {integrity: sha512-SQFof9H+LXeWNz8wDe7oN5zu7ket0qwMu5vZubW4GCJ8Kkeh6nBWUz87+KTz/G3Kqsrp0j/W253XJb3KMEeg3w==}
-
-  '@types/bun@1.2.9':
-    resolution: {integrity: sha512-epShhLGQYc4Bv/aceHbmBhOz1XgUnuTZgcxjxk+WXwNyDXavv5QHD1QEFV0FwbTSQtNq6g4ZcV6y0vZakTjswg==}
 
   '@types/eslint-plugin-jsx-a11y@6.10.0':
     resolution: {integrity: sha512-TGKmk2gO6DrvTVADNOGQMqn3SzqcFcJILFnXNllQA34us9uClS3/AsL/cERPz6jS9ePI3bx+1q8/d2GZsxPVYw==}
@@ -2186,6 +2259,11 @@ packages:
   cluster-key-slot@1.1.2:
     resolution: {integrity: sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA==}
     engines: {node: '>=0.10.0'}
+
+  cmdk-solid@1.1.2:
+    resolution: {integrity: sha512-E0g6bwr2Z92Ib1K2WHwGsq6xsrkVVSN1oe5YTg8LCV3iIwtyZORwmR+8n0xrecqycdhgAar8vWUjtB1OJt9tiA==}
+    peerDependencies:
+      solid-js: ^1.8.0
 
   color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
@@ -2606,6 +2684,9 @@ packages:
   es-to-primitive@1.3.0:
     resolution: {integrity: sha512-w+5mJ3GuFL+NjVtJlvydShqE1eN3h3PbI7/5LAsYJP/2qtuMXjfL2LpHSRqo4b4eSF5K/DH1JXKUAHSB2UW50g==}
     engines: {node: '>= 0.4'}
+
+  es-toolkit@1.37.2:
+    resolution: {integrity: sha512-ADDfk+pPFF0ofMpRAIc6on01p8heiuwuuJsYLzTP4UOjxVK9QsE2+0D1Q4J/zX2XBo6ac+27H5++YBIwmGAX/g==}
 
   esbuild-register@3.6.0:
     resolution: {integrity: sha512-H2/S7Pm8a9CL1uhp9OvjwrBh5Pvx0H8qVOxNu8Wed9Y7qv56MPtq+GGM8RJpq6glYJn9Wspr8uw7l55uyinNeg==}
@@ -3533,6 +3614,11 @@ packages:
   nanoid@3.3.11:
     resolution: {integrity: sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
+
+  nanoid@5.1.5:
+    resolution: {integrity: sha512-Ir/+ZpE9fDsNH0hQ3C68uyThDXzYcim2EqcZ8zn8Chtt1iylPT9xXJB0kPCnqzgcEGikO9RxSrh63MsmVCU7Fw==}
+    engines: {node: ^18 || >=20}
     hasBin: true
 
   nanostores@0.11.4:
@@ -5447,6 +5533,15 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  '@kobalte/core@0.12.6(solid-js@1.9.5)':
+    dependencies:
+      '@floating-ui/dom': 1.6.13
+      '@internationalized/date': 3.8.0
+      '@internationalized/number': 3.6.1
+      '@kobalte/utils': 0.9.1(solid-js@1.9.5)
+      solid-js: 1.9.5
+      solid-prevent-scroll: 0.1.10(solid-js@1.9.5)
+
   '@kobalte/core@0.13.9(solid-js@1.9.5)':
     dependencies:
       '@floating-ui/dom': 1.6.13
@@ -5557,6 +5652,13 @@ snapshots:
     transitivePeerDependencies:
       - encoding
       - supports-color
+
+  '@modular-forms/solid@0.25.1(solid-js@1.9.5)(typescript@5.8.3)':
+    dependencies:
+      solid-js: 1.9.5
+      valibot: 1.0.0(typescript@5.8.3)
+    transitivePeerDependencies:
+      - typescript
 
   '@neon-rs/load@0.0.4': {}
 
@@ -5882,6 +5984,11 @@ snapshots:
 
   '@sindresorhus/merge-streams@2.3.0': {}
 
+  '@solid-primitives/deep@0.2.10(solid-js@1.9.5)':
+    dependencies:
+      '@solid-primitives/memo': 1.4.1(solid-js@1.9.5)
+      solid-js: 1.9.5
+
   '@solid-primitives/event-listener@2.4.0(solid-js@1.9.5)':
     dependencies:
       '@solid-primitives/utils': 6.3.0(solid-js@1.9.5)
@@ -5901,6 +6008,17 @@ snapshots:
       '@solid-primitives/event-listener': 2.4.0(solid-js@1.9.5)
       '@solid-primitives/rootless': 1.5.0(solid-js@1.9.5)
       '@solid-primitives/static-store': 0.1.0(solid-js@1.9.5)
+      '@solid-primitives/utils': 6.3.0(solid-js@1.9.5)
+      solid-js: 1.9.5
+
+  '@solid-primitives/memo@1.4.1(solid-js@1.9.5)':
+    dependencies:
+      '@solid-primitives/scheduled': 1.5.0(solid-js@1.9.5)
+      '@solid-primitives/utils': 6.3.0(solid-js@1.9.5)
+      solid-js: 1.9.5
+
+  '@solid-primitives/mutation-observer@1.2.0(solid-js@1.9.5)':
+    dependencies:
       '@solid-primitives/utils': 6.3.0(solid-js@1.9.5)
       solid-js: 1.9.5
 
@@ -5925,6 +6043,10 @@ snapshots:
   '@solid-primitives/rootless@1.5.0(solid-js@1.9.5)':
     dependencies:
       '@solid-primitives/utils': 6.3.0(solid-js@1.9.5)
+      solid-js: 1.9.5
+
+  '@solid-primitives/scheduled@1.5.0(solid-js@1.9.5)':
+    dependencies:
       solid-js: 1.9.5
 
   '@solid-primitives/static-store@0.1.0(solid-js@1.9.5)':
@@ -6088,6 +6210,18 @@ snapshots:
       - tsx
       - yaml
 
+  '@tanstack/eslint-plugin-query@5.73.3(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3)':
+    dependencies:
+      '@typescript-eslint/utils': 8.29.1(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3)
+      eslint: 9.24.0(jiti@2.4.2)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+
+  '@tanstack/query-core@5.74.4': {}
+
+  '@tanstack/query-devtools@5.73.3': {}
+
   '@tanstack/router-utils@1.115.0':
     dependencies:
       '@babel/generator': 7.27.0
@@ -6123,6 +6257,17 @@ snapshots:
       - tsx
       - yaml
 
+  '@tanstack/solid-query-devtools@5.74.4(@tanstack/solid-query@5.74.4(solid-js@1.9.5))(solid-js@1.9.5)':
+    dependencies:
+      '@tanstack/query-devtools': 5.73.3
+      '@tanstack/solid-query': 5.74.4(solid-js@1.9.5)
+      solid-js: 1.9.5
+
+  '@tanstack/solid-query@5.74.4(solid-js@1.9.5)':
+    dependencies:
+      '@tanstack/query-core': 5.74.4
+      solid-js: 1.9.5
+
   '@types/babel__core@7.20.5':
     dependencies:
       '@babel/parser': 7.27.0
@@ -6145,10 +6290,6 @@ snapshots:
       '@babel/types': 7.27.0
 
   '@types/braces@3.0.5': {}
-
-  '@types/bun@1.2.9':
-    dependencies:
-      bun-types: 1.2.9
 
   '@types/eslint-plugin-jsx-a11y@6.10.0':
     dependencies:
@@ -6585,6 +6726,7 @@ snapshots:
     dependencies:
       '@types/node': 22.14.1
       '@types/ws': 8.18.1
+    optional: true
 
   c12@3.0.3(magicast@0.3.5):
     dependencies:
@@ -6682,6 +6824,14 @@ snapshots:
   clsx@2.1.1: {}
 
   cluster-key-slot@1.1.2: {}
+
+  cmdk-solid@1.1.2(solid-js@1.9.5):
+    dependencies:
+      '@kobalte/core': 0.12.6(solid-js@1.9.5)
+      '@kobalte/utils': 0.9.1(solid-js@1.9.5)
+      '@solid-primitives/deep': 0.2.10(solid-js@1.9.5)
+      '@solid-primitives/mutation-observer': 1.2.0(solid-js@1.9.5)
+      solid-js: 1.9.5
 
   color-convert@2.0.1:
     dependencies:
@@ -6995,6 +7145,8 @@ snapshots:
       is-callable: 1.2.7
       is-date-object: 1.1.0
       is-symbol: 1.1.1
+
+  es-toolkit@1.37.2: {}
 
   esbuild-register@3.6.0(esbuild@0.19.12):
     dependencies:
@@ -8061,6 +8213,8 @@ snapshots:
   ms@2.1.3: {}
 
   nanoid@3.3.11: {}
+
+  nanoid@5.1.5: {}
 
   nanostores@0.11.4: {}
 

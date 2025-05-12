@@ -1,4 +1,4 @@
-import type { User } from "better-auth";
+import { A } from "@solidjs/router";
 import { Match, Switch } from "solid-js";
 
 import { m } from "~/paraglide/messages";
@@ -19,7 +19,8 @@ import { Sheet, SheetTrigger } from "~/components/ui/sheet";
 
 import { auth, signIn } from "~/lib/auth-client";
 
-import { A } from "@solidjs/router";
+import type { DiscordProfile } from "~/schemas/discord-profile";
+
 import ChevronDown from "~icons/lucide/chevron-down";
 import LogOut from "~icons/lucide/log-out";
 import Menu from "~icons/lucide/menu";
@@ -27,7 +28,7 @@ import UserIcon from "~icons/lucide/user";
 import Wrench from "~icons/lucide/wrench";
 import Discord from "~icons/simple-icons/discord";
 
-export function MainHeader(props: { user: (User & { username: string }) | undefined }) {
+export function MainHeader(props: { user: DiscordProfile | undefined }) {
   return (
     <Sheet defaultOpen={false}>
       <MainMenuSheet />
@@ -61,7 +62,7 @@ export function MainHeader(props: { user: (User & { username: string }) | undefi
                   <DropdownMenu>
                     <DropdownMenuTrigger class="flex items-center gap-2 hover:cursor-pointer">
                       <img
-                        src={user().image!}
+                        src={user().avatar_url}
                         alt={user().name}
                         class="size-10 rounded-full"
                         loading="lazy"
@@ -81,7 +82,7 @@ export function MainHeader(props: { user: (User & { username: string }) | undefi
                         <UserIcon class="size-4" />
                         {m.profile()}
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem as={A} href={localizeHref("/dashboard")}>
                         <Wrench class="size-4" />
                         {m.dashboard()}
                       </DropdownMenuItem>
