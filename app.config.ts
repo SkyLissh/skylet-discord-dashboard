@@ -8,7 +8,7 @@ import Icons from "unplugin-icons/vite";
 export default defineConfig({
   middleware: "src/middleware/index.ts",
   server: {
-    preset: "netlify",
+    preset: "vercel",
   },
   vite: {
     resolve: {
