@@ -1,10 +1,11 @@
-import { action, redirect } from "@solidjs/router";
+import { action, redirect, reload } from "@solidjs/router";
 import { setCookie } from "vinxi/http";
 
 import { capitalize } from "es-toolkit/string";
 import * as v from "valibot";
 
 import { m } from "~/paraglide/messages";
+import { localizeHref } from "~/paraglide/runtime";
 
 import { and, eq } from "drizzle-orm";
 import { db } from "~/db";
@@ -19,6 +20,7 @@ import {
 import { TwitchAlertForm } from "~/schemas/forms/twitch-alert-form";
 
 import type { ToastVariant } from "~/components/ui/toast";
+import { getTwitchAlerts } from "../queries/twitch-alerts";
 
 export const createTwitchAlert = action(
   async (formData: FormData): Promise<{ error: string; variant?: ToastVariant }> => {
@@ -85,7 +87,9 @@ export const createTwitchAlert = action(
       }
     );
 
-    throw redirect(`/dashboard/${alertCreated.guildId}/twitch`);
+    throw redirect(localizeHref(`/dashboard/${alertCreated.guildId}/twitch`), {
+      revalidate: [getTwitchAlerts.key],
+    });
   }
 );
 
@@ -99,19 +103,6 @@ export const updateTwitchAlert = action(
     if (!streamer) {
       return { error: m.should_add_twitch_channel() };
     }
-
-    const [alert] = await db
-      .select()
-      .from(twitchAlerts)
-      .where(
-        and(
-          eq(twitchAlerts.streamer, data.twitch_user),
-          eq(twitchAlerts.guildId, data.guild)
-        )
-      )
-      .limit(1);
-
-    if (alert) return { error: m.alert_already_exists(), variant: "warning" };
 
     const subscriptions = await getTwitchSubscriptions();
     const subscriptionExists = subscriptions?.find(
@@ -154,17 +145,16 @@ export const updateTwitchAlert = action(
       }
     );
 
-    throw redirect(`/dashboard/${alertUpdated.guildId}/twitch`);
+    throw redirect(localizeHref(`/dashboard/${alertUpdated.guildId}/twitch`), {
+      revalidate: [getTwitchAlerts.key],
+    });
   }
 );
 
 export const deleteTwitchAlert = action(async (alertId: string, service: "twitch") => {
   "use server";
 
-  const [deletedAlert] = await db
-    .delete(twitchAlerts)
-    .where(eq(twitchAlerts.id, alertId))
-    .returning();
+  await db.delete(twitchAlerts).where(eq(twitchAlerts.id, alertId)).returning();
 
   setCookie(
     "toast",
@@ -181,5 +171,5 @@ export const deleteTwitchAlert = action(async (alertId: string, service: "twitch
     }
   );
 
-  throw redirect(`/dashboard/${deletedAlert.guildId}/twitch`);
+  throw reload({ revalidate: [getTwitchAlerts.key] });
 });

@@ -1,4 +1,4 @@
-import { action } from "@solidjs/router";
+import { action, query } from "@solidjs/router";
 import { FetchError } from "ofetch";
 import * as v from "valibot";
 
@@ -137,29 +137,28 @@ const unsubscribeTwitchEvent = async (subscriptionId: string) => {
   }
 };
 
-export const unsubscribeAllTwitchEvents = action(async () => {
-  "use server";
-  await getSessionServer();
+export const unsubscribeAllTwitchEvents = action(
+  async (subscriptions: TwitchSubscription[]) => {
+    "use server";
+    await getSessionServer();
 
-  const subscriptions = await getTwitchSubscriptions();
-  console.log(subscriptions);
+    if (!subscriptions) return false;
 
-  if (!subscriptions) return false;
+    for (const subscription of subscriptions) {
+      await unsubscribeTwitchEvent(subscription.id);
+    }
 
-  for (const subscription of subscriptions) {
-    await unsubscribeTwitchEvent(subscription.id);
-  }
+    return true;
+  },
+  "unsubscribeAllTwitchEvents"
+);
 
-  return true;
-});
-
-export const getTwitchSubscriptions = async () => {
+export const getTwitchSubscriptions = query(async () => {
   "use server";
   await getSessionServer();
 
   try {
     const res = await fetchTwitch("/eventsub/subscriptions");
-    console.log(res);
 
     const { output: subscriptions, success } = v.safeParse(
       v.array(TwitchSubscription),
@@ -172,4 +171,4 @@ export const getTwitchSubscriptions = async () => {
   } catch {
     return null;
   }
-};
+}, "getTwitchSubscriptions");

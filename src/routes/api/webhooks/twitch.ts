@@ -21,11 +21,12 @@ import { getTwitchGame, getTwitchStream, getTwitchUser } from "~/lib/queries/twi
 async function sendNotification(notification: TwitchEventSub) {
   const userLogin = notification.event!.broadcaster_user_login;
 
-  const [alert] = await db
+  const alerts = await db
     .select()
     .from(twitchAlerts)
-    .where(eq(twitchAlerts.streamer, userLogin))
-    .limit(1);
+    .where(eq(twitchAlerts.streamer, userLogin));
+
+  if (alerts.length === 0) return;
 
   const user = await getTwitchUser(userLogin);
   if (!user) return;
@@ -36,34 +37,38 @@ async function sendNotification(notification: TwitchEventSub) {
   const game = await getTwitchGame(stream.game_id!);
   if (!game) return;
 
-  await bot.post(Routes.channelMessages(alert.channelId), {
-    body: {
-      content: alert.message.replace("{{streamer}}", stream.user_name),
-      tts: false,
-      embeds: [
-        {
-          title: stream.title,
-          author: {
-            name: `${stream.user_name} is live on Twitch!`,
+  const messages = alerts.map(async (alert) => {
+    await bot.post(Routes.channelMessages(alert.channelId), {
+      body: {
+        content: alert.message.replace("{{streamer}}", stream.user_name),
+        tts: false,
+        embeds: [
+          {
+            title: stream.title,
+            author: {
+              name: `${stream.user_name} is live on Twitch!`,
+              url: `https://www.twitch.tv/${stream.user_login}`,
+              icon_url: user.profile_image_url,
+            },
             url: `https://www.twitch.tv/${stream.user_login}`,
-            icon_url: user.profile_image_url,
-          },
-          url: `https://www.twitch.tv/${stream.user_login}`,
-          thumbnail: { url: game.box_art_url },
-          image: {
-            url: `${stream.thumbnail_url}?timestamp=${Date.now()}`,
-          },
-          fields: [
-            { name: ":video_game: Playing", value: game.name },
-            { name: ":eyes: Viewers", value: stream.viewer_count },
-          ],
-          footer: { text: "Started at" },
-          timestamp: stream.started_at.toISOString(),
-          color: 6570404,
-        } as APIEmbed,
-      ],
-    },
+            thumbnail: { url: game.box_art_url },
+            image: {
+              url: `${stream.thumbnail_url}?timestamp=${Date.now()}`,
+            },
+            fields: [
+              { name: ":video_game: Playing", value: game.name },
+              { name: ":eyes: Viewers", value: stream.viewer_count },
+            ],
+            footer: { text: "Started at" },
+            timestamp: stream.started_at.toISOString(),
+            color: 6570404,
+          } as APIEmbed,
+        ],
+      },
+    });
   });
+
+  Promise.all(messages);
 }
 
 export async function POST(event: APIEvent) {
@@ -91,7 +96,7 @@ export async function POST(event: APIEvent) {
   const notification = v.parse(TwitchEventSub, JSON.parse(body));
 
   if (messageType === "webhook_callback_verification") {
-    return new Response(notification.challenge, { status: 204 });
+    return new Response(notification.challenge, { status: 200 });
   }
   if (messageType === "revocation") return new Response(null, { status: 204 });
   if (messageType === "notification") {

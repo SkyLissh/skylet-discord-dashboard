@@ -79,8 +79,6 @@ export async function getSessionServer() {
       },
     });
 
-    console.log(signIn.url);
-
     if (signIn.redirect) throw redirect(signIn.url!);
     throw new Error("No session");
   }

@@ -1,6 +1,5 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "hi": "Hola {username}",
   "skylet": "SkyLet",
   "select_language": "Selecciona un idioma",
   "login": "Iniciar sesión",
@@ -18,6 +17,7 @@
   "welcome_messages_description": "Recibe a nuevos miembros con un mensaje personalizado.",
   "moderation": "Moderación",
   "moderation_description": "Modera tu servidor con facilidad.",
+  "hi": "Hola {username}",
   "logout": "Cerrar sesión",
   "profile": "Perfil",
   "user_servers": "Servidores de {username}",
