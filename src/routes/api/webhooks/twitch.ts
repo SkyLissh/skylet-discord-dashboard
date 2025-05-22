@@ -68,7 +68,7 @@ async function sendNotification(notification: TwitchEventSub) {
     });
   });
 
-  Promise.all(messages);
+  await Promise.all(messages);
 }
 
 export async function POST(event: APIEvent) {
