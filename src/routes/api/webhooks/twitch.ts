@@ -26,15 +26,20 @@ async function sendNotification(notification: TwitchEventSub) {
     .from(twitchAlerts)
     .where(eq(twitchAlerts.streamer, userLogin));
 
+  console.log(alerts.map((alert) => alert.streamer));
+
   if (alerts.length === 0) return;
 
   const user = await getTwitchUser(userLogin);
+  console.log(user);
   if (!user) return;
 
   const stream = await getTwitchStream(userLogin);
+  console.log(stream);
   if (!stream) return;
 
   const game = await getTwitchGame(stream.game_id!);
+  console.log(game);
   if (!game) return;
 
   const messages = alerts.map(async (alert) => {
@@ -67,6 +72,8 @@ async function sendNotification(notification: TwitchEventSub) {
       },
     });
   });
+
+  console.log(messages);
 
   await Promise.all(messages);
 }
